@@ -1,4 +1,4 @@
-package ir.snapppay.paymentgateway.service;
+package ir.snapppay.paymentgateway.service.purchase;
 
 import ir.snapppay.paymentgateway.models.tables.records.PurchaseRecord;
 

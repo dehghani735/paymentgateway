@@ -19,6 +19,7 @@
         <plugins.jooq.version>3.14.11</plugins.jooq.version>
         <docker-maven-plugin>0.44.0</docker-maven-plugin>
         <postgres.image>postgres:16</postgres.image>
+        <errors-spring-boot-starter.version>1.4.0</errors-spring-boot-starter.version>
         <postgres.host>localhost</postgres.host>
         <db.name>projectx</db.name>
         <db.port>5432</db.port>
@@ -99,6 +100,16 @@
             <groupId>org.testcontainers</groupId>
             <artifactId>postgresql</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-afterburner</artifactId>
+<!--            <version>${jackson-bom.version}</version>-->
+        </dependency>
+        <dependency>
+            <groupId>me.alidg</groupId>
+            <artifactId>errors-spring-boot-starter</artifactId>
+            <version>${errors-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 

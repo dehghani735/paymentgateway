@@ -1,6 +1,6 @@
 package ir.snapppay.paymentgateway.controller;
 
-import ir.snapppay.paymentgateway.service.PurchaseService;
+import ir.snapppay.paymentgateway.service.purchase.PurchaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;

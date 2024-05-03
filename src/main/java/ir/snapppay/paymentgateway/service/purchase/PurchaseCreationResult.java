@@ -1,4 +1,4 @@
-package ir.snapppay.paymentgateway.service;
+package ir.snapppay.paymentgateway.service.purchase;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
