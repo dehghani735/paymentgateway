@@ -25,6 +25,9 @@ CREATE TABLE client_config
     PRIMARY KEY (id)
 );
 
+CREATE TYPE block_type AS ENUM ('BLOCK', 'UNBLOCK');
+CREATE TYPE currency AS ENUM ('IRR');
+
 -- psp table definition.
 CREATE TABLE psp
 (
@@ -44,6 +47,10 @@ CREATE TABLE psp
     version                        INT         NOT NULL DEFAULT 0,
     PRIMARY KEY (name)
 );
+
+CREATE TYPE payment_facilitator_status AS ENUM ('UNDEFINED', 'IN_PROGRESS', 'REGISTERED', 'FAILED');
+CREATE TYPE terminal_type AS ENUM ('NORMAL', 'PAYMENT_FACILITATION');
+
 
 CREATE TABLE terminal
 (
@@ -72,6 +79,31 @@ CREATE TABLE terminal
     version                    INT                        NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );
+
+CREATE TYPE purchase_state AS ENUM (
+    'CREATED', -- The first state that means a new purchase created.
+    'EXPIRED', -- When the purchase expired.
+    'PSP_INIT_SUCCESS', -- When the purchase successfully initialized in PSP.
+    'PSP_INIT_FAILED', -- When the purchase failed to initialize in PSP.
+    'PSP_PAYMENT_SUCCESS', -- When the purchase paid successfully in PSP.
+    'PSP_PAYMENT_FAILED', -- When the purchase failed in PSP.
+    'PSP_PAYMENT_EXPIRED', -- When the purchase expired while we waited for user to come back from PSP.
+    'PSP_VERIFY_SUCCESS', -- When the purchase successfully verified in PSP.
+    'PSP_VERIFY_REVERSED', -- When the amount of a purchase is not same as the saved purchase.
+    'PSP_VERIFY_FAILED', -- When the purchase verification failed in PSP.
+    'PSP_VERIFY_UNKNOWN', -- When getting an unknown response from PSP.
+    'CLIENT_NOT_VERIFIED', -- When the client did not call the purchase verification API.
+    'PURCHASE_SUCCESS', -- When the purchase successfully added in the ledger.
+    'FINISHED' -- The final state that means all process successfully has be done.
+    );
+
+CREATE TYPE fee_payment_type AS ENUM ( 'PRE_PAID', 'POST_PAID' );
+
+CREATE TYPE psp_error AS ENUM (
+    'UNKNOWN',
+    'CANCELLED_BY_USER',
+    'TRANSACTION_TIMED_OUT' -- The user didn't reply within the specified time frame.
+    );
 
 CREATE TABLE purchase
 (
