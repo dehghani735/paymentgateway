@@ -1,0 +1,58 @@
+spring:
+  jooq:
+    sql-dialect: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/projectx
+    username: ppg
+    password: ppg
+    hikari:
+      transaction-isolation: 8
+      connection-timeout: 5000
+      maximum-pool-size: 30
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+      ACCEPT_FLOAT_AS_INT: false
+    mapper:
+      ACCEPT_CASE_INSENSITIVE_PROPERTIES: true
+      ACCEPT_CASE_INSENSITIVE_ENUMS: true
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+  messages:
+    basename: i18n/messages
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+        max-page-size: 100
+
+management:
+  health:
+    mail:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - metrics
+          - httptrace
+          - prometheus
+      cors:
+        allowed-origins: [ "*" ]
+        allowed-methods: [ "GET", "POST", "OPTIONS" ]
+        allowed-headers: [ "*" ]
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
+
+logging:
+  level:
+    ir:
+      snapppay: debug
+    org:
+      jooq:
+        tools:
+          StopWatch: debug
