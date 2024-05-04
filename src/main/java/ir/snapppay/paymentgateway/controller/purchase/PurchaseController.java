@@ -5,10 +5,7 @@ import ir.snapppay.paymentgateway.service.purchase.PurchaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Provides APIs to manage purchase-related APIs.
@@ -31,5 +28,12 @@ public class PurchaseController {
         log.debug("About to create a purchase request: {}", dto);
 
         return purchaseService.create(dto.toRecord());
+    }
+
+    @PostMapping(value = "/{purchaseId:\\d+}/verify")
+    public VerificationResultDto.Status verifyPurchase(@PathVariable Long purchaseId) {
+        log.debug("Received purchase verification request; purchaseId: {}", purchaseId);
+
+        return purchaseService.verifyOnPsp(purchaseId);
     }
 }
