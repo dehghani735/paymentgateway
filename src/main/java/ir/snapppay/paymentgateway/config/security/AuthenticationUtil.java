@@ -1,6 +1,6 @@
 package ir.snapppay.paymentgateway.config.security;
 
-import ir.snapppay.paymentgateway.service.client.ClientDetails;
+import ir.snapppay.paymentgateway.service.token.ClientDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;

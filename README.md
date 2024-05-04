@@ -16,9 +16,12 @@ Verifies the purchase if it exists and updates it.
 
 # Stack
 
-In this project, I used postgres as DBMS. I used jooq in order to interact with database and create entities.
+In this project, I used postgres as RDBMS. I used jooq in order to interact with database and create entities.
 
+# Installation and Usage
 
+For running project, please first run the following command:
 
+`mvn clean compile`
 
-
+Then, go to target/generated-sources/jooq and make this directory as "Generated Sources Root".

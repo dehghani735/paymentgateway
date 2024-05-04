@@ -1,4 +1,4 @@
-package ir.snapppay.paymentgateway.service.client;
+package ir.snapppay.paymentgateway.service.token;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import ir.snapppay.paymentgateway.util.Serializer;

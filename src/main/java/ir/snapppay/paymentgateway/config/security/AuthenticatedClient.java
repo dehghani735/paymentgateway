@@ -1,6 +1,6 @@
 package ir.snapppay.paymentgateway.config.security;
 
-import ir.snapppay.paymentgateway.service.client.ClientDetails;
+import ir.snapppay.paymentgateway.service.token.ClientDetails;
 import lombok.Getter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

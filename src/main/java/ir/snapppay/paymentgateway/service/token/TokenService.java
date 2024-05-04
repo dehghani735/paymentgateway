@@ -1,7 +1,6 @@
 package ir.snapppay.paymentgateway.service.token;
 
 import ir.snapppay.paymentgateway.controller.token.TokenDto;
-import ir.snapppay.paymentgateway.service.client.ClientDetails;
 import org.springframework.security.authentication.BadCredentialsException;
 
 import java.util.Optional;

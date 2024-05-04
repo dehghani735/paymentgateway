@@ -1,6 +1,6 @@
 package ir.snapppay.paymentgateway.config.security;
 
-import ir.snapppay.paymentgateway.service.client.ClientDetails;
+import ir.snapppay.paymentgateway.service.token.ClientDetails;
 import ir.snapppay.paymentgateway.service.token.TokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

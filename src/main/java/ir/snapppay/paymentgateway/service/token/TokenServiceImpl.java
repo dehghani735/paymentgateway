@@ -4,7 +4,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import ir.snapppay.paymentgateway.controller.token.TokenDto;
-import ir.snapppay.paymentgateway.service.client.ClientDetails;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
