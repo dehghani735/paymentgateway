@@ -1,6 +1,7 @@
 package ir.snapppay.paymentgateway.config.security;
 
 import ir.snapppay.paymentgateway.service.client.ClientDetails;
+import ir.snapppay.paymentgateway.service.token.TokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
@@ -49,11 +50,10 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
      *
      * @param clientIp The client request IP to check.
      * @throws AccessDeniedException If IP not matched.
-     * @throws AppException          When client is not active. Wraps the {@link PredefinedError#CLIENT_NOT_ACTIVE} error.
      */
     private void checkClient(@Nullable String clientIp, ClientDetails client) {
         if (!client.getIsActive())
-            throw new AppException(CLIENT_NOT_ACTIVE);
+            throw new RuntimeException("CLIENT_NOT_ACTIVE");
 
         if (clientIp == null) {
             log.warn("Client {} ({}) IP was null!", client.getCode(), client.getName());
@@ -64,7 +64,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         var ipNotMatched = client.getIpWhiteList().stream().noneMatch(clientIp::contains);
         if (mustCheckIp && ipNotMatched) {
             log.warn("Client {} ({}) request from IP {} is not trusted", client.getCode(), client.getName(), clientIp);
-            throw new AppException(IP_NOT_TRUSTED);
+            throw new RuntimeException("IP_NOT_TRUSTED");
         }
     }
 }
