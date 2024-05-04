@@ -26,7 +26,7 @@ public class JwtAuthenticationFilter extends HttpFilter {
      */
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        var checkAuth = !request.getRequestURI().startsWith("/v3/tokens");
+        var checkAuth = !request.getRequestURI().startsWith("/v1/tokens");
         if (checkAuth) extractJwtToken(request);
         chain.doFilter(request, response);
     }
